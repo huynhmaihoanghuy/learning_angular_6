@@ -1,0 +1,92 @@
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">Component Interaction</h1>
+<strong><h2>Parent Component send data to child component</h2></strong>
+{{receiveDataFromPerant}}
+
+<br/>
+<strong><h2>Child Component send data to Parent component: use Event Emitter</h2></strong>
+<button (click)="fireSendChildToParent()">Send data from Child Component to Parent Component</button>
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">ngFor Directive</h1>
+<div *ngFor="let color of colors; index as i; first as f; last as l; odd as o; even as e">
+    <h3>Value: {{color}} - Index: {{i}} - isFirst: {{f}} - isLast: {{l}} - Odd: {{o}} - Even: {{e}}</h3>
+</div>
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">ngSwitch Directive</h1>
+<div [ngSwitch]="switchColor">
+    <div *ngSwitchCase="'red'">Pick red color</div>
+    <div *ngSwitchCase="'blue'">Pick blue color</div>
+    <div *ngSwitchDefault>Pick again</div>
+</div>
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">ngIf Directive</h1>
+<strong><h2>Case 1</h2></strong>
+<div *ngIf="isDisplay; else elseBlock;">
+    Name is shown
+</div>
+
+<ng-template #elseBlock>
+    <div>
+        Name is hidden
+    </div>
+</ng-template>
+
+<br/>
+<strong><h2>Case 2</h2></strong>
+<div *ngIf="isDisplay; then displayBlock; else elseBlock2;"></div>
+
+<ng-template #displayBlock>
+    <div>
+        Name is shown
+    </div>
+</ng-template>
+
+<ng-template #elseBlock2>
+    <div>
+        Name is hidden
+    </div>
+</ng-template>
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">Two-way Binding</h1>
+<input type="text" [(ngModel)]="twoWayBinding">
+{{twoWayBinding}}
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">Template Reference Variables</h1>
+<input type="text" #myInput>
+<button (click)="showLog(myInput.value)">Log</button>
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">Class and Style Binding</h1>
+<p class="text-success">{{name}}</p>
+<p [class]="successClass">{{name}}</p>
+<p [class.text-danger]="hasError">{{name}}</p>
+<p [ngClass]="messageClass">Su dung ngClass</p>
+
+<p [style.color]="hasError ? 'red' : 'green'">Style Binding</p>
+<p [ngStyle]="messageStyle">Style Binding by ngStyle</p>
+
+<input type="text" value="Hello" [id]="myId">
+<input type="text" value="Hello" id={{myId}} [disabled]="isDisabled">  <!-- Property binding -->
+
+<!-- ****** -->
+<hr/>
+<h1 class="text-center">Event Binding</h1>
+<button (click)="onClick($event)">Click</button>
+<br/>
+<button (click)="greeting='Hi, Huy and Han'">Greet</button>
+
+{{greeting}}
+
+
